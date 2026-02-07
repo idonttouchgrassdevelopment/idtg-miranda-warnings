@@ -19,6 +19,8 @@ Config.UISettings = {
 -- Command Configuration
 Config.Command = "miranda"
 Config.DefaultKeybind = "F9"
+Config.CloseCommand = "closemiranda"
+Config.DefaultCloseKeybind = "ESCAPE"
 
 -- Job Restriction Configuration
 -- Set to true to enable job restrictions, false to allow everyone

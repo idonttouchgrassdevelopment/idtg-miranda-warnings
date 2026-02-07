@@ -5,6 +5,7 @@ local lastToggle = 0 -- debounce timer (ms)
 -- Load config
 local mirandaRights = Config.MirandaRights
 local uiSettings = Config.UISettings
+local closeCommand = Config.CloseCommand or (Config.Command .. "close")
 
 -- =========================
 -- JOB CHECK
@@ -99,10 +100,6 @@ CreateThread(function()
             DisableControlAction(0, 199, true)
             DisableControlAction(0, 200, true)
 
-            -- ESC closes UI
-            if IsControlJustPressed(0, 200) then
-                SetDisplay(false)
-            end
         end
         Wait(0)
     end
@@ -127,6 +124,14 @@ RegisterCommand(Config.Command, function()
 end, false)
 
 RegisterKeyMapping(Config.Command, 'Toggle Miranda Rights Card', 'keyboard', Config.DefaultKeybind)
+
+RegisterCommand(closeCommand, function()
+    if display then
+        SetDisplay(false)
+    end
+end, false)
+
+RegisterKeyMapping(closeCommand, 'Close Miranda Rights Card', 'keyboard', Config.DefaultCloseKeybind or 'ESCAPE')
 
 -- =========================
 -- DISPLAY HANDLER

@@ -48,19 +48,6 @@ function updateUIFromConfig() {
     });
 }
 
-// Close UI when pressing Escape key
-document.addEventListener('keyup', function(event) {
-    if (event.key === "Escape") {
-        try {
-            $.post('https://miranda-rights-card/close', JSON.stringify({}));
-        } catch (error) {
-            console.error('Error sending close message:', error);
-            // Fallback: direct hide if message fails
-            forceCloseUI();
-        }
-    }
-});
-
 // Force close UI as a fallback mechanism
 function forceCloseUI() {
     console.log('[Miranda Rights] Force closing UI');
